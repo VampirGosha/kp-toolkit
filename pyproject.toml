@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kp-toolkit"
+version = "1.0.0"
+description = "Экспорт и анализ твоей библиотеки Кинопоиска"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.55",
+]
+
+[project.scripts]
+kp = "kp_toolkit.cli:main"
+
+[tool.setuptools]
+packages = ["kp_toolkit"]

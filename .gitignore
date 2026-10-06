@@ -1,0 +1,12 @@
+# данные и профиль браузера (личное, в репозиторий не тащим)
+data/
+.kp-browser/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
