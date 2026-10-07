@@ -10,7 +10,7 @@ from . import report, scraper
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="kp-toolkit",
+        prog="kp",
         description=(
             "Выгрузка и анализ твоей библиотеки Кинопоиска: "
             "списки, оценки и отчёт по вкусу."

@@ -303,7 +303,8 @@ def render_text(summary: dict, titles: list[Title], planned: list[Title]) -> str
 
 def run(data_dir: Path) -> list[Path]:
     titles, warnings = parsing.load_watched(data_dir)
-    planned = parsing.load_planned(data_dir)
+    planned, planned_warnings = parsing.load_planned(data_dir)
+    warnings.extend(planned_warnings)
 
     if not titles:
         raise SystemExit(

@@ -2,6 +2,15 @@
 data/
 .kp-browser/
 
+# экспортированные/сгенерированные данные, если вдруг оказались в корне
+kinopoisk_*.csv
+report.txt
+report.json
+
+# локальные конфиги с секретами
+.env
+*.local
+
 # Python
 __pycache__/
 *.py[cod]
@@ -10,3 +19,11 @@ venv/
 *.egg-info/
 build/
 dist/
+
+# инструменты и кэши проверок
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.log

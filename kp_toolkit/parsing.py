@@ -163,10 +163,15 @@ def load_titles(path: Path) -> tuple[list[Title], list[str]]:
         warnings.append(f"{path.name}: не найдена колонка с оценкой")
 
     titles: list[Title] = []
+    empty_titles = 0
 
     for row in rows:
         raw_title = get(row, columns["title"])
         clean_title, title_year, tag = split_title(raw_title)
+
+        if not clean_title:
+            empty_titles += 1
+            continue
 
         year = parse_year(get(row, columns["year"])) or title_year
 
@@ -190,6 +195,9 @@ def load_titles(path: Path) -> tuple[list[Title], list[str]]:
             )
         )
 
+    if empty_titles:
+        warnings.append(f"{path.name}: пропущено {empty_titles} строк(и) с пустым названием")
+
     return titles, warnings
 
 
@@ -200,9 +208,8 @@ def load_watched(data_dir: Path) -> tuple[list[Title], list[str]]:
     return load_titles(path)
 
 
-def load_planned(data_dir: Path) -> list[Title]:
-    titles, _ = load_titles(data_dir / PLANNED)
-    return titles
+def load_planned(data_dir: Path) -> tuple[list[Title], list[str]]:
+    return load_titles(data_dir / PLANNED)
 
 
 def normalize_url(url: str) -> str:
